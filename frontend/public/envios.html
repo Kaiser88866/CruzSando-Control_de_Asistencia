@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Envíos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="flex justify-center items-center p-4 border-b border-gray-700">
+                <img src="../assets/Logo.png" alt="Logo" class="h-26 w-auto" />
+            </div>
+            <div class="p-6 font-bold text-xl border-b border-gray-700">Menú</div>
+            <nav class="flex-1 px-4 py-6 space-y-3">
+                <a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Inicio</a>
+                <a href="empleados.html" class="block py-2 px-4 rounded hover:bg-gray-700">Empleados</a>
+                <a href="asistencias.html" class="block py-2 px-4 rounded hover:bg-gray-700">Asistencias</a>
+                <a href="pagos.html" class="block py-2 px-4 rounded hover:bg-gray-700">Pagos</a>
+                <a href="envios.html" class="block py-2 px-4 rounded bg-gray-700">Envíos</a>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="flex-1 p-6 overflow-auto">
+
+            <!-- Título -->
+            <h2 class="text-3xl font-extrabold text-gray-800 mb-6 flex items-center gap-2">
+                <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v18H3V3zM8 7h8M8 11h4M8 15h6" />
+                </svg>
+                Información del Envío
+            </h2>
+
+            <!-- Bloque combinado -->
+            <div id="bloqueDatosCombinados" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 hidden">
+                <!-- Envío -->
+                <div id="datosEnvio" class="bg-white border-l-4 border-blue-600 rounded-lg shadow-md p-6 space-y-2">
+                    <h3 class="text-xl font-bold text-blue-700 flex items-center gap-2">
+                        📦 Datos del Envío
+                    </h3>
+                    <p><strong>Empresa destino:</strong> <span id="envio-empresa"></span></p>
+                    <p><strong>Persona recolectora:</strong> <span id="envio-recolectora"></span></p>
+                    <p><strong>Dirección:</strong> <span id="envio-direccion"></span></p>
+                    <p><strong>Fecha:</strong> <span id="envio-fecha"></span></p>
+
+                    <div class="pt-3">
+                        <button onclick="editarModalEnvio()"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full">
+                            ✏️ Editar Datos de Envío
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Traslado -->
+                <div id="datosTraslado"
+                    class="bg-white border-l-4 border-purple-600 rounded-lg shadow-md p-6 space-y-2">
+                    <h3 class="text-xl font-bold text-purple-700 flex items-center gap-2">
+                        🚚 Datos de Traslado
+                    </h3>
+                    <p><strong>Dueño de maquila CruzSando:</strong> <span id="traslado-dueno"></span></p>
+                    <p><strong>Empresa Transportista:</strong> <span id="traslado-transportista"></span></p>
+                    <p><strong>Lugar de Entrega:</strong> <span id="traslado-lugar"></span></p>
+                    <p><strong>Clave Producto SAT:</strong> <span id="traslado-clave"></span></p>
+
+                    <div class="pt-3">
+                        <button onclick="abrirModalTraslado()"
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded w-full">
+                            ✏️ Editar Datos de Traslado
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón centrado -->
+            <div class="flex justify-center mb-6">
+                <button onclick="abrirModalPaquetes()"
+                    class="bg-green-600 hover:bg-green-700 text-white px-10 py-3 rounded shadow-md text-lg flex items-center gap-2">
+                    ➕ Añadir Envío
+                </button>
+            </div>
+
+            <!-- Si no hay datos -->
+            <div id="noDatosEnvio" class="text-center text-gray-500 mt-6 hidden">
+                No hay datos de envío registrados.
+            </div>
+
+            <!-- Historial -->
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M5 11h14M5 19h14M5 15h14" />
+                </svg>
+                Historial de Envíos
+            </h2>
+
+            <!-- Acordeones -->
+            <div id="acordeonEnvios" class="space-y-4">
+                <!-- Aquí se renderizarán acordeones de fecha → paquete → prendas -->
+            </div>
+
+            <div id="noEnvios" class="text-center text-gray-500 hidden mt-10">
+                No hay envíos que mostrar.
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/logoBase64.js"></script>
+    <script src="../js/envios.js"></script>
+</body>
+
+</html>

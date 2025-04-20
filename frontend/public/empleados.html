@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empleados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="flex justify-center items-center p-4 border-b border-gray-700">
+                <img src="../assets/Logo.png" alt="Logo" class="h-26 w-auto">
+            </div>
+            <div class="p-6 font-bold text-xl border-b border-gray-700">Menú</div>
+            <nav class="flex-1 px-4 py-6 space-y-3">
+                <a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Inicio</a>
+                <a href="empleados.html" class="block py-2 px-4 rounded bg-gray-700">Empleados</a>
+                <a href="asistencias.html" class="block py-2 px-4 rounded hover:bg-gray-700">Asistencias</a>
+                <a href="pagos.html" class="block py-2 px-4 rounded hover:bg-gray-700">Pagos</a>
+                <a href="envios.html" class="block py-2 px-4 rounded hover:bg-gray-700">Envíos</a>
+            </nav>
+        </aside>
+
+
+        <!-- Contenido principal -->
+        <main class="flex-1 p-6 overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold">Empleados</h1>
+                <button onclick="abrirModalNuevoEmpleado()"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Añadir Empleado
+                </button>
+                <button id="btn-toggle-inactivos"
+                    class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 ml-2">
+                    Ocultar inactivos
+                </button>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded shadow">
+                <table class="min-w-full text-sm text-left border" id="tablaEmpleados">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="px-4 py-2">Nombre</th>
+                            <th class="px-4 py-2">Tipo de Pago</th>
+                            <th class="px-4 py-2">Pago Unitario</th>
+                            <th class="px-4 py-2">Tipo de Empleado</th>
+                            <th class="px-4 py-2">Huella</th>
+                            <th class="px-4 py-2">Creado</th>
+                            <th class="px-4 py-2">Modificado</th>
+                            <th class="px-4 py-2">Estado</th>
+                            <th class="px-4 py-2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTablaEmpleados" class="divide-y divide-gray-100"></tbody>
+                </table>
+            </div>
+
+            <p id="infoEmpleados" class="text-sm text-gray-600 mt-2 mb-4"></p>
+
+        </main>
+    </div>
+
+    <script src="../js/empleados.js"></script>
+</body>
+
+</html>

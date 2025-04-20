@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistencias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Litepicker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" />
+    <!-- Litepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="flex justify-center items-center p-4 border-b border-gray-700">
+                <img src="../assets/Logo.png" alt="Logo" class="h-26 w-auto">
+            </div>
+            <div class="p-6 font-bold text-xl border-b border-gray-700">Menú</div>
+            <nav class="flex-1 px-4 py-6 space-y-3">
+                <a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Inicio</a>
+                <a href="empleados.html" class="block py-2 px-4 rounded hover:bg-gray-700">Empleados</a>
+                <a href="asistencias.html" class="block py-2 px-4 rounded bg-gray-700">Asistencias</a>
+                <a href="pagos.html" class="block py-2 px-4 rounded hover:bg-gray-700">Pagos</a>
+                <a href="envios.html" class="block py-2 px-4 rounded hover:bg-gray-700">Envíos</a>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        <main class="flex-1 p-6 overflow-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold">Control de Asistencias</h1>
+                <input type="text" id="selectorSemana" class="border px-3 py-2 rounded text-sm cursor-pointer" readonly />
+            </div>
+
+            <div id="contenedorAsistencias" class="space-y-4">
+                <!-- Aquí se inyectan los acordeones dinámicamente -->
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/asistencias.js"></script>
+</body>
+
+</html>
