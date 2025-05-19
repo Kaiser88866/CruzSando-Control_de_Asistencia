@@ -35,7 +35,12 @@
         <main class="flex-1 p-6 overflow-auto">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-3xl font-bold">Control de Asistencias</h1>
-                <input type="text" id="selectorSemana" class="border px-3 py-2 rounded text-sm cursor-pointer" readonly />
+                <div class="relative">
+                    <input id="selectorSemana" type="text" class="pl-10 pr-3 py-2 border rounded text-sm w-full"
+                        readonly />
+                    <span
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none">📅</span>
+                </div>
             </div>
 
             <div id="contenedorAsistencias" class="space-y-4">

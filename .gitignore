@@ -1,0 +1,9 @@
+/nssm-2.24
+/Output
+/php-8.2.28
+/requirements
+instalador.iss
+instalar.bat
+probar-servicio.bat
+service_err.log
+service_out.log
